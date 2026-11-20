@@ -1,0 +1,43 @@
+[package]
+name = "effector"
+version = "0.0.1" # change with html_root_url in lib.rs
+edition = "2024"
+authors = ["nomissbowling <nomissbowling@yahoo.co.jp>"]
+
+description = "effector"
+keywords = ["audio", "game", "engine", "effector", "wave"]
+categories = ["multimedia", "mathematics", "external-ffi-bindings"]
+license = "MIT"
+
+documentation = "https://docs.rs/effector/"
+homepage = "https://crates.io/crates/effector"
+repository = "https://github.com/nomissbowling/effector-rs"
+
+readme = "README.md"
+
+#build = "build.rs"
+
+[lib]
+name = "effector"
+
+[dependencies]
+rodio = { version = "=0.23.0" }
+dasp = { version = "=0.11.0" }
+cpal = { version = "=0.18.2" }
+
+yaml = { version = "=0.12.0", package = "yaml-rust2" }
+pyo3 = { version = "=0.30.1", features = ["auto-initialize"] }
+
+thiserror = { version = "=2.0.20" }
+anyhow = { version = "=1.0.104" }
+
+[package.metadata.docs.rs]
+rustc-args = ["--cfg", "docsrs"]
+# all-features = false
+# features = ["python", "pyo3/abi3-py314"]
+features = ["pyo3/abi3-py314"]
+# targets = ["x86_64-unknown-linux-gnu"]
+
+### test before cargo publish
+# PYO3_NO_PYTHON=1
+# RUSTDOCFLAGS="--cfg docsrs" cargo +nightly doc --no-deps --all-features
